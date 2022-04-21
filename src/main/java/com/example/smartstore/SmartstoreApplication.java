@@ -18,9 +18,10 @@ public class SmartstoreApplication implements WebApplicationInitializer {
   public void onStartup(ServletContext servletContext) throws ServletException {
     //ApplicationContext 생성 및 ROOT 컨테이너로 등록
     AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-    rootContext.register(ApplicationConfiguration.class);
+//    rootContext.register(ApplicationConfiguration.class);
     ContextLoaderListener contextLoaderListener = new ContextLoaderListener(rootContext);
 
+    //test commit
     //서블릿 컨테이너에 ContextLoaderListener 등록
     servletContext.addListener(contextLoaderListener);
 
@@ -30,7 +31,7 @@ public class SmartstoreApplication implements WebApplicationInitializer {
     //WebContext 생성 (컨트롤러와 관련된 스프링 컨테이너)
     AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
     webContext.setServletContext(servletContext);
-    webContext.register(WebConfiguration.class);
+//    webContext.register(WebConfiguration.class);
 
     //디스패처 서블릿에 WebContext 등록
     dispatcherServlet.setApplicationContext(webContext);
